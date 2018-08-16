@@ -79,6 +79,8 @@ sections/password-content.liquid:
   development: 2018-08-16T13:01:31+12:00   0c8da256866907f3231036c32696eb7c
 sections/password-header.liquid:
   development: 2018-08-16T13:01:31+12:00   5c115e0ccfcf53f5bfb26162231c2945
+sections/product-template-has-options.liquid:
+  development: 2018-08-17T05:59:42+12:00   b86f879adaebda7f79163b8cf398c3f7
 sections/product-template.liquid:
   development: 2018-08-16T13:01:31+12:00   3deebe24ce4d782a2fa29a817756c1f8
 sections/rich-text.liquid:
@@ -151,6 +153,8 @@ templates/page.order-form.liquid:
   development: 2018-08-16T21:46:51+12:00   4cfaa0a1035f96acfc1ac317cfb8f19d
 templates/password.liquid:
   development: 2018-08-16T13:01:35+12:00   e499bcf8175b9db9b3a0933ba9f3ed3a
+templates/product.has-options.liquid:
+  development: 2018-08-17T05:49:33+12:00   0023229b86c6202036743389f34f7f32
 templates/product.liquid:
   development: 2018-08-16T13:01:35+12:00   8dc0a5ff5551ec620d64c92ba21689d8
 templates/search.liquid:
