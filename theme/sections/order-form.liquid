@@ -1,0 +1,47 @@
+<div class="wrapper wrapper--margins wrapper__order-form">
+  <div class="rte">
+    {{ page.content }}
+  </div>
+
+  <div class="order-form__dynamic-content">
+	
+	<div class="order-form__search-bar">
+		<form action="/search" method="get" class="search-bar text-center" role="search">
+		  <h2 class="home-section-title less-margin">{{ 'order_form.search.label' | t }}</h2>
+		  <input type="search" name="q" value="{{ search.terms | escape }}">
+		</form>
+	</div>
+
+
+	<div class="order-form__live-cart">
+		<form id="cart-form" action="/cart" method="post" novalidate class="cart table-wrap">
+			<div class="order-form__cart-item-container grid">
+					{% for item in cart.items %}
+						<div class="order-form__cart-item grid__item large--one-quarter">
+							<img src="{{item.image | img_url: 'master' }}" class="cart-item-image"/>
+							<span class="cart-item-title">{{item.title}}</span>
+							<span class="cart-item-price">${{item.price}}</span>
+						</div>
+					{% endfor %}
+			</div>
+			<div class="order-form__cart-buttons">
+				<button type="submit" name="checkout" class="btn btn--regular btn--color btn--fill">{{ 'cart.general.checkout' | t }}</button>
+			</div>
+		</form>
+	</div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Order Form",
+    "settings": [
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
