@@ -2038,6 +2038,7 @@ $(document).ready(function(){
         dataType: "json",
         success: function( data ) {
           if (data.length) {
+            console.log(data)
             cache[request.term] = data;
           }
           response(data);
@@ -2050,7 +2051,7 @@ $(document).ready(function(){
     },
   }).data("ui-autocomplete")._renderItem = function (ul, item ) {
     return $("<li>")
-    .append( "<a><img src=" + item.thumb + " class='autothumb' /><span>" + item.label + "</span></a>" )
+    .append( "<a href='" + item.url + "'><img src=" + item.thumb + " class='autothumb' /><span>" + item.label + "</span></a>" )
     .appendTo( ul );
     console.log('done')
   };
@@ -2060,3 +2061,45 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
   var ul = this.menu.element;
   ul.outerWidth(this.element.outerWidth());
 }
+
+
+//QUICKBUY MODAL WIP
+/* 
+var QuickBuy = (function(){
+  var selectors = {
+
+  };
+
+  var init = function(){
+    $('a.ui-menu-item-wrapper').click(onClick)
+
+    $('#quickbuyModal').on('shown.bs.modal', function(e){
+      theme["Product"].init();
+    });
+
+    $("#quickbuyModal").on('hide.bs.modal', function(){
+      $(selectors.quickbuy).find(".modal-content").html('');
+    });
+
+    var onClick = function(e){
+      $.get($(this).attr("href"), function(data){
+        $(selectors.quickbuy).find(".modal-content").append($(data).find(".quickAdd-anchor"));
+
+        if ($("#quickbuyContent script").length > 0){
+          eval($("#quickbuyContent").find("script").text());
+        }
+        if ($('.modal-images').find('img').length > 1){
+          //initialise slick slider
+        }
+
+        $("#quickbuyModal").modal();
+      });
+
+      e.preventDefault();
+      return false;
+    }
+    return {
+      init:init
+    }
+  }
+})();*/

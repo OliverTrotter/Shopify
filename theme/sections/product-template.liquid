@@ -124,7 +124,7 @@
 
             <div class="form__column{% if section.settings.enable_payment_button %} form__column--shopify-payment-btn{% endif %}">
               <label>&nbsp;</label>
-              <button type="submit" name="add" id="AddToCart-{{ section.id }}" class="btn btn--fill btn--regular btn--color{% if section.settings.enable_payment_button %} btn--shopify-payment-btn btn--secondary-accent{% endif %}">
+              <button type="submit" name="add" id="AddToCart-{{ section.id }}" class="btn btn--fill btn--regular btn--color{% if section.settings.enable_payment_button %} btn--shopify-payment-btn btn--secondary-accent{% endif %} add-cart-btn">
                 <span id="AddToCartText-{{ section.id }}">{{ 'products.product.add_to_cart' | t }}</span>
               </button>
               {% if section.settings.enable_payment_button %}
