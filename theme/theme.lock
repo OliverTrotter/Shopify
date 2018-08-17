@@ -3,6 +3,8 @@ assets/gift-card.scss.liquid:
   development: 2018-08-16T13:01:31+12:00   8f8c1fc8e0b00be539e9be6b7df8f8b6
 assets/jquery-2.2.3.min.js:
   development: 2018-08-16T13:01:32+12:00   33cabfa15c1060aaa3d207c653afb1ee
+assets/jquery-ui.min.js:
+  development: 2018-08-17T13:33:37+12:00   c15b1008dec3c8967ea657a7bb4baaec
 assets/lazysizes.min.js:
   development: 2018-08-16T13:01:32+12:00   830660aaaf0a60b712ad5c32482ee689
 assets/no-image.svg:
@@ -10,9 +12,9 @@ assets/no-image.svg:
 assets/preloader.gif:
   development: 2018-08-16T13:01:32+12:00   4b47e5482edc6ac1b1adec65c7c0051c
 assets/theme.js:
-  development: 2018-08-16T13:01:32+12:00   7bdc55ec1af7057bb3d6d36276fa1ad6
+  development: 2018-08-17T14:12:57+12:00   7b8c18e7cf01d980b343c5916ff6492d
 assets/theme.scss.liquid:
-  development: 2018-08-16T22:18:52+12:00   f64736ec1833536c473202e5a4a96044
+  development: 2018-08-17T14:15:16+12:00   c2f4e2d20daed51fc6c92b359af445bf
 assets/vendor.js:
   development: 2018-08-16T13:01:32+12:00   61bdd6100244869e398a4db18e64ea77
 config/settings_data.json:
@@ -22,7 +24,7 @@ config/settings_schema.json:
 layout/password.liquid:
   development: 2018-08-16T13:01:32+12:00   202fbabda9f10ab238d749c74c85f083
 layout/theme.liquid:
-  development: 2018-08-16T13:01:33+12:00   93bec7970076c4b7c42cf8423a29fabb
+  development: 2018-08-17T13:35:29+12:00   41d0099fdd85f3e28151b2f82e67b97c
 locales/de.json:
   development: 2018-08-16T13:01:33+12:00   8eb0504805ff39e5e172e0bab08da631
 locales/en.default.json:
@@ -103,6 +105,8 @@ snippets/collection-grid-item.liquid:
   development: 2018-08-16T13:01:33+12:00   25496dab25c335b162e4ec1e0eb3e95f
 snippets/footer_social-icons.liquid:
   development: 2018-08-16T13:01:33+12:00   1ca7e466418588fe84c5cc4456f1365f
+snippets/json_cleanup.liquid:
+  development: 2018-08-17T13:55:17+12:00   487faf65d735754225cc8a5731326683
 snippets/newsletter.liquid:
   development: 2018-08-16T13:01:33+12:00   ec407dbba63b5feef0bc78ab18854af0
 snippets/page_header.liquid:
@@ -157,5 +161,7 @@ templates/product.has-options.liquid:
   development: 2018-08-17T05:49:33+12:00   0023229b86c6202036743389f34f7f32
 templates/product.liquid:
   development: 2018-08-16T13:01:35+12:00   8dc0a5ff5551ec620d64c92ba21689d8
+templates/search.json.liquid:
+  development: 2018-08-17T13:17:49+12:00   06bc2e0457b76af158d718ba199183c1
 templates/search.liquid:
   development: 2018-08-16T13:01:35+12:00   f44fa003f48ebfc104ab0937b80b3a84

@@ -2018,3 +2018,45 @@ theme.init = function() {
   }
 };
 $(theme.init);
+
+
+$(document).ready(function(){
+  var cache = {};
+  $('.order-form__search-bar .search-bar input').autocomplete({
+    source: function( request, response ) {
+      if (request.term in cache) {
+        response(cache[request.term]);
+        return;
+      }
+      $.ajax({
+        url: "https://oliver-trotter.myshopify.com/search",
+        data: {
+          q: "*" + request.term + "*",
+          type: "product",
+          view: "json",
+        },
+        dataType: "json",
+        success: function( data ) {
+          if (data.length) {
+            cache[request.term] = data;
+          }
+          response(data);
+        }
+      });
+    },
+    minLength: 2,
+    select: function( event, ui ) {
+      window.location = ui.item.url;
+    },
+  }).data("ui-autocomplete")._renderItem = function (ul, item ) {
+    return $("<li>")
+    .append( "<a><img src=" + item.thumb + " class='autothumb' /><span>" + item.label + "</span></a>" )
+    .appendTo( ul );
+    console.log('done')
+  };
+});
+
+jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+  var ul = this.menu.element;
+  ul.outerWidth(this.element.outerWidth());
+}

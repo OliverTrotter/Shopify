@@ -6433,32 +6433,54 @@ img.mfp-img {
   right: 0;
   padding-top: 0; }
 
+#order-form{
+  .wrapper__order-form{
+    .order-form__dynamic-content{
+      .order-form__search-bar{
 
-.wrapper__order-form{
-  .order-form__dynamic-content{
-    .order-form__search-bar{
-
-    }
-    .order-form__live-cart{
-      .order-form__cart-item-container{
-        border: 1px solid;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 0;
-        .order-form__cart-item{
-          .cart-item-image{}
-          .cart-item-title, .cart-item-price{
-            display: block;
-            width: 100%;
-            text-align: center;
+      }
+      .order-form__live-cart{
+        .order-form__cart-item-container{
+          border: 1px solid;
+          border-radius: 15px;
+          padding: 20px;
+          margin: 0;
+          .order-form__cart-item{
+            .cart-item-image{}
+            .cart-item-title, .cart-item-price{
+              display: block;
+              width: 100%;
+              text-align: center;
+            }
+            .cart-item-title{}
+            .cart-item-price{}
           }
-          .cart-item-title{}
-          .cart-item-price{}
+        }
+        .order-form__cart-buttons{
+          text-align: right;
+          margin-right: 10px;
+          margin-top: 10px;
         }
       }
-      .order-form__cart-buttons{
-        text-align: right;
-        margin-right: 10px;
+    }
+  }
+  .ui-autocomplete{
+    background: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    z-index: 999;
+    .ui-menu-item{
+      cursor: pointer;
+      &:hover{
+        background: lightgray;
+      }
+      .ui-menu-item-wrapper{
+        img{
+          vertical-align: middle;
+        }
+        span{
+          margin-left: 5px;
+        }
       }
     }
   }
