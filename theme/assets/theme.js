@@ -1082,6 +1082,7 @@ theme.Product = (function() {
     // Stop parsing if we don't have the product json script tag when loading
     // section in the Theme Editor
     if (!$('#ProductJson-' + sectionId).html()) {
+      console.log($('#ProductJson-' + sectionId))
       this.addQuantityButtons();
       return;
     }
@@ -2019,42 +2020,93 @@ theme.init = function() {
 };
 $(theme.init);
 
+var QuickBuy = (function(){
+  var selectors = {
+    quickbuy: "#quickbuyModal",
+    quickbuylink: ".ui-menu-item-wrapper",
+  };
+
+  var init = function(){
+    $(selectors.quickbuylink).click(onClick);
+
+    $(selectors.quickbuy).on('shown.bs.modal', function(e){
+      
+    });
+
+    $(selectors.quickbuy).on('hide.bs.modal', function(){
+      $(selectors.quickbuy).find(".modal-content").html('');
+    });
+  }
+
+  var onClick = function(e){
+    
+    console.log('clicked')
+    
+    $.get($(this).attr("data-src"), function(data){
+      $(selectors.quickbuy).find(".modal-content").append($(data).find(".quickAdd-anchor"));
+      $(selectors.quickbuy).find(".modal-content").append($(data).find("#ProductJson-product-template"));
+
+      /*if ($("#quickbuyContent script").length > 0){
+        eval($("#quickbuyContent").find("script").text());
+      }*/
+
+      $("#quickbuyModal").modal();
+      var modalProduct = new theme.Product('.product-template');
+      theme.QuantityButtons();
+      $(timber.init);
+
+      //modalProduct.init();
+      //console.log(modalProduct)
+    });
+
+    return false;
+  }
+
+  return {
+    init:init
+  }
+
+})();
 
 $(document).ready(function(){
-  var cache = {};
-  $('.order-form__search-bar .search-bar input').autocomplete({
-    source: function( request, response ) {
-      if (request.term in cache) {
-        response(cache[request.term]);
-        return;
-      }
-      $.ajax({
-        url: "https://oliver-trotter.myshopify.com/search",
-        data: {
-          q: "*" + request.term + "*",
-          type: "product",
-          view: "json",
-        },
-        dataType: "json",
-        success: function( data ) {
-          if (data.length) {
-            console.log(data)
-            cache[request.term] = data;
-          }
-          response(data);
+  if ($('#order-form').length > 0){
+
+    var cache = {};
+    $('.order-form__search-bar .search-bar input').autocomplete({
+      source: function( request, response ) {
+        if (request.term in cache) {
+          response(cache[request.term]);
+          return;
         }
-      });
-    },
-    minLength: 2,
-    select: function( event, ui ) {
-      window.location = ui.item.url;
-    },
-  }).data("ui-autocomplete")._renderItem = function (ul, item ) {
-    return $("<li>")
-    .append( "<a href='" + item.url + "'><img src=" + item.thumb + " class='autothumb' /><span>" + item.label + "</span></a>" )
-    .appendTo( ul );
-    console.log('done')
-  };
+        $.ajax({
+          url: "https://oliver-trotter.myshopify.com/search",
+          data: {
+            q: "*" + request.term + "*",
+            type: "product",
+            view: "json",
+          },
+          dataType: "json",
+          success: function( data ) {
+            if (data.length) {
+              console.log(data)
+              cache[request.term] = data;
+            }
+            response(data);
+            QuickBuy.init();
+          }
+        });
+      },
+      minLength: 2,
+      select: function( event, item ) {},
+    }).data("ui-autocomplete")._renderItem = function (ul, item ) {
+      return $("<li>")
+      .append( "<div data-src='" + item.url + "'><img src=" + item.thumb + " class='autothumb' /><span>" + item.label + "</span></div>" )
+      .appendTo( ul );
+      console.log('done')
+    };
+
+  }
+
 });
 
 jQuery.ui.autocomplete.prototype._resizeMenu = function () {
@@ -2063,43 +2115,7 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 }
 
 
-//QUICKBUY MODAL WIP
-/* 
-var QuickBuy = (function(){
-  var selectors = {
 
-  };
-
-  var init = function(){
-    $('a.ui-menu-item-wrapper').click(onClick)
-
-    $('#quickbuyModal').on('shown.bs.modal', function(e){
-      theme["Product"].init();
-    });
-
-    $("#quickbuyModal").on('hide.bs.modal', function(){
-      $(selectors.quickbuy).find(".modal-content").html('');
-    });
-
-    var onClick = function(e){
-      $.get($(this).attr("href"), function(data){
-        $(selectors.quickbuy).find(".modal-content").append($(data).find(".quickAdd-anchor"));
-
-        if ($("#quickbuyContent script").length > 0){
-          eval($("#quickbuyContent").find("script").text());
-        }
-        if ($('.modal-images').find('img').length > 1){
-          //initialise slick slider
-        }
-
-        $("#quickbuyModal").modal();
-      });
-
-      e.preventDefault();
-      return false;
-    }
-    return {
-      init:init
-    }
-  }
-})();*/
+$(document).ready(function(){
+QuickBuy.init();
+});

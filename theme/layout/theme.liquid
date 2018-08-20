@@ -22,6 +22,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.color_primary }}">
 
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
   {{ '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
 
@@ -47,6 +48,7 @@
 
   {{ 'jquery-2.2.3.min.js' | asset_url | script_tag }}
   {{ 'jquery-ui.min.js' | asset_url | script_tag }}
+  {{ 'bootstrap.min.js' | asset_url | script_tag }}
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'lazysizes.min.js' | asset_url }}"></script><![endif]-->
@@ -114,5 +116,13 @@
     {% endif %}
   </script>
 
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="quickbuyModal">
+    <div class="modal-dialog container" role="document">
+      <div class="modal-content">
+          
+      </div>
+    </div>
+  </div>
 </body>
 </html>

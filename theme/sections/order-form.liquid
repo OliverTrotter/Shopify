@@ -6,9 +6,9 @@
   <div class="order-form__dynamic-content">
 	
 	<div class="order-form__search-bar">
-		<form action="/search" method="get" class="search-bar text-center" role="search">
+		<form  class="search-bar text-center">
 		  <h2 class="home-section-title less-margin">{{ 'order_form.search.label' | t }}</h2>
-		  <input type="search" name="q" value="{{ search.terms | escape }}">
+		  <input name="q" value="{{ search.terms | escape }}">
 		</form>
 	</div>
 
