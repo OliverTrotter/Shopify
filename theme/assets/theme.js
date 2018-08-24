@@ -1248,6 +1248,7 @@ theme.Product = (function() {
           $(this.settings.selectors.addToCart)
             .removeClass('btn--disabled')
             .prop('disabled', false);
+          $(this.settings.selectors.addToCart).attr('data-variant-id', variant.id);
           $(this.settings.selectors.addToCartText).text(
             theme.strings.add_to_cart
           );
@@ -2043,8 +2044,13 @@ var QuickBuy = (function(){
     console.log('clicked')
     
     $.get($(this).attr("data-src"), function(data){
+
+      var sectionID = $(data).find(".quickAdd-anchor").attr("data-section-id");
+
+      var productJSON = $(data).find("#ProductJson-" + sectionID);
+
       $(selectors.quickbuy).find(".modal-content").append($(data).find(".quickAdd-anchor"));
-      $(selectors.quickbuy).find(".modal-content").append($(data).find("#ProductJson-product-template"));
+      $(selectors.quickbuy).find(".modal-content").append(productJSON);
 
       /*if ($("#quickbuyContent script").length > 0){
         eval($("#quickbuyContent").find("script").text());
@@ -2052,21 +2058,34 @@ var QuickBuy = (function(){
 
       $("#quickbuyModal").modal();
       var modalProduct = new theme.Product('.product-template');
-      theme.QuantityButtons();
+      theme.quantityButtons();
       $(timber.init);
-
-      //modalProduct.init();
-      //console.log(modalProduct)
-    });
+    }).then(ajaxListener);
 
     return false;
   }
+  
+  var ajaxListener = function(e){
+    var $modal = $('.modal-content');
+    var $product = $modal.find('.product-template');
+    var $cartButton = $modal.find('.add-cart-btn');
+    console.log($cartButton.attr('data-variant-id'))
+    $cartButton.click(function(e){
+      var variantID = $(this).attr('data-variant-id');
+      var quantity = $product.find('#Quantity').val();
+      var productProperties = {};
+    });
+    return false;
+  };
 
   return {
     init:init
   }
 
 })();
+
+
+
 
 $(document).ready(function(){
   if ($('#order-form').length > 0){
@@ -2117,5 +2136,5 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 
 
 $(document).ready(function(){
-QuickBuy.init();
+  QuickBuy.init();
 });

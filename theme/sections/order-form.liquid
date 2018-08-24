@@ -15,7 +15,7 @@
 
 	<div class="order-form__live-cart">
 		<form id="cart-form" action="/cart" method="post" novalidate class="cart table-wrap">
-			<div class="order-form__cart-item-container grid">
+			<div class="order-form__cart-item-container grid {% if cart.item_count > 0 %}has-items{% endif %}">
 					{% for item in cart.items %}
 						<div class="order-form__cart-item grid__item large--one-quarter">
 							<img src="{{item.image | img_url: 'master' }}" class="cart-item-image"/>

@@ -1,4 +1,4 @@
-<div class="product-template" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+<div class="product-template quickAdd-anchor" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
 
 {% assign header_title = product.title %}
 {% include 'page_header' with header_title %}
@@ -124,7 +124,7 @@
 
             <div class="form__column{% if section.settings.enable_payment_button %} form__column--shopify-payment-btn{% endif %}">
               <label>&nbsp;</label>
-              <button type="submit" name="add" id="AddToCart-{{ section.id }}" class="btn btn--fill btn--regular btn--color{% if section.settings.enable_payment_button %} btn--shopify-payment-btn btn--secondary-accent{% endif %}">
+              <button type="submit" name="add" id="AddToCart-{{ section.id }}" class="btn btn--fill btn--regular btn--color{% if section.settings.enable_payment_button %} btn--shopify-payment-btn btn--secondary-accent{% endif %} add-cart-btn">
                 <span id="AddToCartText-{{ section.id }}">{{ 'products.product.add_to_cart' | t }}</span>
               </button>
               {% if section.settings.enable_payment_button %}
@@ -154,7 +154,7 @@
 </div>
 
 {% unless product == empty %}
-  <script type="application/json" id="ProductJson-{{ section.id }}">
+  <script type="application/json" id="ProductJson-{{ section.id }}" class="productJSON">
     {{ product | json }}
   </script>
 {% endunless %}
@@ -177,24 +177,28 @@
         "default": true
       }
     ],
-     "blocks": [
-    {
-      "type": "select",
-      "name": "Add Button",
-      "settings": [
-        {
-          "id": "link",
-          "type": "url",
-          "label": "Button link"
-        },
-        {
-          "id": "linktext",
-          "type": "text",
-          "label": "Button text",
-          "default": "Click here"
-        }
-      ]
-    }
-  ]
+    "blocks": [
+      {
+        "type": "product_property",
+        "name": "Product Property",
+        "settings":[
+          {
+            "type": "text",
+            "id": "property_tag",
+            "label": "Product tag"
+          },
+          {
+            "type": "text",
+            "id": "property_name",
+            "label": "Property name"
+          },
+          {
+            "type": "checkbox",
+            "id": "property_required",
+            "label": "Property Required?"
+          }
+        ]
+      }
+    ]
   }
 {% endschema %}

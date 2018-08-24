@@ -154,7 +154,7 @@
 </div>
 
 {% unless product == empty %}
-  <script type="application/json" id="ProductJson-{{ section.id }}">
+  <script type="application/json" id="ProductJson-{{ section.id }}" class="productJSON">
     {{ product | json }}
   </script>
 {% endunless %}
